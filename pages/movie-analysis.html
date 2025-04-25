@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Data Analysis | Cinematic Trends</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- D3.js -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    
+    <!-- Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    
+    <!-- Vega & Vega-Lite (for Altair) -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    
+    <style>
+        .viz-container {
+            margin-bottom: 40px;
+        }
+        .chart-container {
+            width: 100%;
+            height: 500px;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            background-color: #fff;
+        }
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        select, button {
+            padding: 8px 12px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav id="main-nav">
+            <div class="logo">
+                <h1>Cinematic Trends</h1>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <div class="dropdown">
+                    <button class="dropbtn">Visualizations</button>
+                    <div class="dropdown-content">
+                        <a href="revenue-budget.html">Revenue vs Budget</a>
+                        <a href="genre-ratings.html">Genre Ratings</a>
+                        <a href="trending.html">Trending Popularity</a>
+                        <a href="movies-by-language.html">Movies by Language</a>
+                        <a href="vote-count-rating.html">Vote Count vs Rating</a>
+                        <a href="top-companies.html">Top Production Companies</a>
+                        <a href="genre-language.html">Genre-Language Heatmap</a>
+                        <a href="rating-distribution.html">Rating Distribution</a>
+                        <a href="movie-analysis.html" class="active">Movie Data Analysis</a>
+                    </div>
+                </div>
+                <a href="team.html">Team</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Movie Data Analysis</h1>
+                <p>Interactive visualizations exploring movie data patterns</p>
+            </div>
+        </section>
+
+        <section class="visualization-section">
+            <div class="container">
+                <div class="viz-intro">
+                    <h2>Exploring Movie Data</h2>
+                    <p>This page features interactive visualizations created with D3.js, Plotly, and Altair to explore patterns in our movie dataset. Discover insights about ratings, popularity, and more through these interactive charts.</p>
+                </div>
+
+                <!-- D3.js Visualization -->
+                <div class="viz-row">
+                    <div class="viz-col">
+                        <div class="viz-card">
+                            <h2>User Rating Distribution (D3.js)</h2>
+                            <div class="controls">
+                                <div class="control-group">
+                                    <label for="rating-filter">Filter by Rating:</label>
+                                    <select id="rating-filter">
+                                        <option value="all">All Ratings</option>
+                                        <option value="1">1 Star</option>
+                                        <option value="2">2 Stars</option>
+                                        <option value="3">3 Stars</option>
+                                        <option value="4">4 Stars</option>
+                                        <option value="5">5 Stars</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="d3-rating-chart" class="chart-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plotly Visualization -->
+                <div class="viz-row">
+                    <div class="viz-col">
+                        <div class="viz-card">
+                            <h2>Budget vs Revenue Analysis (Plotly)</h2>
+                            <div class="controls">
+                                <div class="control-group">
+                                    <button id="toggle-log-scale">Toggle Log Scale</button>
+                                </div>
+                            </div>
+                            <div id="plotly-budget-revenue" class="chart-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Altair Visualization -->
+                <div class="viz-row">
+                    <div class="viz-col">
+                        <div class="viz-card">
+                            <h2>Genre Analysis (Altair)</h2>
+                            <div id="altair-genre-chart" class="chart-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="viz-methodology">
+                    <h2>Methodology Notes</h2>
+                    <p>These visualizations are created using the following libraries:</p>
+                    <ul>
+                        <li><strong>D3.js</strong> - A JavaScript library for producing dynamic, interactive data visualizations</li>
+                        <li><strong>Plotly</strong> - A high-level, declarative charting library built on top of d3.js and stack.gl</li>
+                        <li><strong>Altair</strong> - A declarative statistical visualization library for Python, based on Vega and Vega-Lite</li>
+                    </ul>
+                    <p>The data used in these visualizations comes from a dataset containing information about movies, including budget, revenue, ratings, and more.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Cinematic Trends</h3>
+                    <p>A data visualization project exploring movie metadata and viewer preferences</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="methodology.html">Methodology</a></li>
+                        <li><a href="conclusion.html">Conclusion</a></li>
+                        <li><a href="team.html">Team</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Email: info@cinematictrends.com</p>
+                    <p>University of Data Science</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Cinematic Trends. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // D3.js Visualization - Rating Distribution
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load the data
+            d3.csv("../data/movies_data.csv").then(function(data) {
+                createD3RatingChart(data);
+                createPlotlyBudgetRevenue(data);
+                createAltairGenreChart(data);
+            }).catch(function(error) {
+                console.error("Error loading the data: ", error);
+            });
+
+            function createD3RatingChart(data) {
+                // Set up dimensions and margins
+                const margin = {top: 40, right: 30, bottom: 60, left: 60};
+                const width = document.getElementById('d3-rating-chart').clientWidth - margin.left - margin.right;
+                const height = document.getElementById('d3-rating-chart').clientHeight - margin.top - margin.bottom;
+
+                // Clear any existing SVG
+                d3.select("#d3-rating-chart").html("");
+
+                // Create SVG element
+                const svg = d3.select("#d3-rating-chart")
+                    .append("svg")
+                    .attr("width", width + margin.left + margin.right)
+                    .attr("height", height + margin.top + margin.bottom)
+                    .append("g")
+                    .attr("transform", `translate(${margin.left},${margin.top})`);
+
+                // Process data - count ratings
+                const ratingCounts = {};
+                data.forEach(d => {
+                    const rating = parseFloat(d.rating);
+                    if (!isNaN(rating)) {
+                        ratingCounts[rating] = (ratingCounts[rating] || 0) + 1;
+                    }
+                });
+
+                // Convert to array for D3
+                const ratingData = Object.entries(ratingCounts).map(([rating, count]) => ({
+                    rating: parseFloat(rating),
+                    count: count
+                })).sort((a, b) => a.rating - b.rating);
+
+                // Set up scales
+                const x = d3.scaleBand()
+                    .domain(ratingData.map(d => d.rating))
+                    .range([0, width])
+                    .padding(0.1);
+
+                const y = d3.scaleLinear()
+                    .domain([0, d3.max(ratingData, d => d.count)])
+                    .nice()
+                    .range([height, 0]);
+
+                // Add X axis
+                svg.append("g")
+                    .attr("transform", `translate(0,${height})`)
+                    .call(d3.axisBottom(x))
+                    .selectAll("text")
+                    .style("text-anchor", "middle");
+
+                // Add X axis label
+                svg.append("text")
+                    .attr("text-anchor", "middle")
+                    .attr("x", width / 2)
+                    .attr("y", height + margin.bottom - 10)
+                    .text("Rating");
+
+                // Add Y axis
+                svg.append("g")
+                    .call(d3.axisLeft(y));
+
+                // Add Y axis label
+                svg.append("text")
+                    .attr("text-anchor", "middle")
+                    .attr("transform", "rotate(-90)")
+                    .attr("y", -margin.left + 15)
+                    .attr("x", -height / 2)
+                    .text("Number of Ratings");
+
+                // Add title
+                svg.append("text")
+                    .attr("x", width / 2)
+                    .attr("y", -margin.top / 2)
+                    .attr("text-anchor", "middle")
+                    .style("font-size", "16px")
+                    .style("font-weight", "bold")
+                    .text("Distribution of User Ratings");
+
+                // Create color scale
+                const colorScale = d3.scaleLinear()
+                    .domain([1, 5])
+                    .range(["#ff9999", "#66cc66"]);
+
+                // Add bars
+                svg.selectAll(".bar")
+                    .data(ratingData)
+                    .enter()
+                    .append("rect")
+                    .attr("class", "bar")
+                    .attr("x", d => x(d.rating))
+                    .attr("width", x.bandwidth())
+                    .attr("y", d => y(d.count))
+                    .attr("height", d => height - y(d.count))
+                    .attr("fill", d => colorScale(d.rating))
+                    .on("mouseover", function(event, d) {
+                        d3.select(this).attr("opacity", 0.8);
+                        
+                        // Add tooltip
+                        svg.append("text")
+                            .attr("class", "tooltip")
+                            .attr("x", x(d.rating) + x.bandwidth() / 2)
+                            .attr("y", y(d.count) - 10)
+                            .attr("text-anchor", "middle")
+                            .text(`Count: ${d.count}`);
+                    })
+                    .on("mouseout", function() {
+                        d3.select(this).attr("opacity", 1);
+                        svg.selectAll(".tooltip").remove();
+                    });
+
+                // Add filter functionality
+                d3.select("#rating-filter").on("change", function() {
+                    const selectedRating = this.value;
+                    let filteredData;
+                    
+                    if (selectedRating === "all") {
+                        filteredData = ratingData;
+                    } else {
+                        filteredData = ratingData.filter(d => d.rating === parseFloat(selectedRating));
+                    }
+                    
+                    // Update y scale
+                    y.domain([0, d3.max(filteredData, d => d.count)]).nice();
+                    svg.select(".y-axis").transition().duration(500).call(d3.axisLeft(y));
+                    
+                    // Update bars
+                    const bars = svg.selectAll(".bar").data(filteredData, d => d.rating);
+                    
+                    bars.exit().remove();
+                    
+                    bars.enter()
+                        .append("rect")
+                        .attr("class", "bar")
+                        .attr("x", d => x(d.rating))
+                        .attr("width", x.bandwidth())
+                        .attr("y", height)
+                        .attr("height", 0)
+                        .attr("fill", d => colorScale(d.rating))
+                        .merge(bars)
+                        .transition()
+                        .duration(500)
+                        .attr("x", d => x(d.rating))
+                        .attr("width", x.bandwidth())
+                        .attr("y", d => y(d.count))
+                        .attr("height", d => height - y(d.count));
+                });
+            }
+
+            function createPlotlyBudgetRevenue(data) {
+                // Process data
+                const plotData = data.map(d => ({
+                    budget: parseInt(d.budget),
+                    revenue: parseInt(d.revenue),
+                    title: d.title,
+                    roi: parseInt(d.revenue) / parseInt(d.budget)
+                }));
+
+                // Create unique data points (since all rows are for the same movie in this sample)
+                const uniqueMovies = Array.from(new Set(plotData.map(d => d.title))).map(title => {
+                    const movie = plotData.find(d => d.title === title);
+                    return {
+                        budget: movie.budget,
+                        revenue: movie.revenue,
+                        title: movie.title,
+                        roi: movie.roi
+                    };
+                });
+
+                // Create scatter plot
+                const trace = {
+                    x: uniqueMovies.map(d => d.budget),
+                    y: uniqueMovies.map(d => d.revenue),
+                    mode: 'markers',
+                    type: 'scatter',
+                    text: uniqueMovies.map(d => `${d.title}<br>Budget: $${d.budget.toLocaleString()}<br>Revenue: $${d.revenue.toLocaleString()}<br>ROI: ${d.roi.toFixed(2)}`),
+                    marker: {
+                        size: 15,
+                        color: uniqueMovies.map(d => d.roi),
+                        colorscale: 'Viridis',
+                        showscale: true,
+                        colorbar: {
+                            title: 'ROI (Revenue/Budget)'
+                        }
+                    },
+                    hoverinfo: 'text'
+                };
+
+                const layout = {
+                    title: 'Movie Budget vs Revenue',
+                    xaxis: {
+                        title: 'Budget ($)',
+                        type: 'linear'
+                    },
+                    yaxis: {
+                        title: 'Revenue ($)',
+                        type: 'linear'
+                    },
+                    hovermode: 'closest'
+                };
+
+                Plotly.newPlot('plotly-budget-revenue', [trace], layout);
+
+                // Add toggle for log scale
+                document.getElementById('toggle-log-scale').addEventListener('click', function() {
+                    const currentXType = layout.xaxis.type;
+                    const currentYType = layout.yaxis.type;
+                    
+                    layout.xaxis.type = currentXType === 'linear' ? 'log' : 'linear';
+                    layout.yaxis.type = currentYType === 'linear' ? 'log' : 'linear';
+                    
+                    Plotly.relayout('plotly-budget-revenue', {
+                        'xaxis.type': layout.xaxis.type,
+                        'yaxis.type': layout.yaxis.type
+                    });
+                });
+            }
+
+            function createAltairGenreChart(data) {
+                // For Altair, we need to prepare the data for Vega-Lite
+                // First, let's extract genres from the flattened genre field
+                const genreCounts = {};
+                
+                data.forEach(d => {
+                    const genres = d.genres_flattened.split(' ');
+                    genres.forEach(genre => {
+                        if (genre) {
+                            genreCounts[genre] = (genreCounts[genre] || 0) + 1;
+                        }
+                    });
+                });
+                
+                // Convert to array for Vega-Lite
+                const genreData = Object.entries(genreCounts).map(([genre, count]) => ({
+                    genre: genre,
+                    count: count
+                })).sort((a, b) => b.count - a.count);
+                
+                // Create Vega-Lite spec
+                const spec = {
+                    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+                    "data": {
+                        "values": genreData
+                    },
+                    "mark": "bar",
+                    "encoding": {
+                        "x": {
+                            "field": "genre",
+                            "type": "nominal",
+                            "sort": "-y",
+                            "title": "Genre"
+                        },
+                        "y": {
+                            "field": "count",
+                            "type": "quantitative",
+                            "title": "Number of Movies"
+                        },
+                        "color": {
+                            "field": "genre",
+                            "type": "nominal",
+                            "legend": null
+                        },
+                        "tooltip": [
+                            {"field": "genre", "type": "nominal", "title": "Genre"},
+                            {"field": "count", "type": "quantitative", "title": "Count"}
+                        ]
+                    },
+                    "title": "Movie Genres Distribution",
+                    "width": "container",
+                    "height": 400
+                };
+                
+                // Render the visualization
+                vegaEmbed('#altair-genre-chart', spec, {actions: false});
+            }
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+            this.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

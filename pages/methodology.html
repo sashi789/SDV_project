@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Methodology | Cinematic Trends</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav id="main-nav">
+            <div class="logo">
+                <h1>Cinematic Trends</h1>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <div class="dropdown">
+                    <button class="dropbtn">Visualizations</button>
+                    <div class="dropdown-content">
+                        <a href="revenue-budget.html">Revenue vs Budget</a>
+                        <a href="genre-ratings.html">Genre Ratings</a>
+                        <a href="trending.html">Trending Popularity</a>
+                        <a href="movies-by-language.html">Movies by Language</a>
+                        <a href="vote-count-rating.html">Vote Count vs Rating</a>
+                        <a href="top-companies.html">Top Production Companies</a>
+                        <a href="genre-language.html">Genre-Language Heatmap</a>
+                        <a href="rating-distribution.html">Rating Distribution</a>
+                    </div>
+                </div>
+                <a href="methodology.html" class="active">Methodology</a>
+                <a href="conclusion.html">Conclusion</a>
+                <a href="team.html">Team</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Methodology</h1>
+                <p>Our approach to analyzing and visualizing cinematic data</p>
+            </div>
+        </section>
+
+        <section class="methodology-content">
+            <div class="container">
+                <div class="methodology-card">
+                    <h2>Data Collection</h2>
+                    <p>Our project utilizes two primary datasets from Kaggle's TMDB collection:</p>
+                    <ul>
+                        <li><strong>movies_metadata.csv</strong>: Contains comprehensive information about movies including budget, revenue, genres, languages, release dates, and ratings</li>
+                        <li><strong>ratings.csv</strong>: Contains user ratings for various movies, allowing us to analyze viewer preferences</li>
+                    </ul>
+                    <p>These datasets were selected for their comprehensiveness, reliability, and relevance to our research questions about cinematic trends and viewer preferences.</p>
+                </div>
+
+                <div class="methodology-card">
+                    <h2>Data Preprocessing</h2>
+                    <p>Before analysis, we performed several preprocessing steps to ensure data quality:</p>
+                    <ol>
+                        <li><strong>Data Cleaning</strong>: We removed duplicate entries, handled missing values, and corrected inconsistencies in the data</li>
+                        <li><strong>Data Transformation</strong>: We converted data types as needed, normalized monetary values, and extracted relevant features from complex fields (e.g., parsing genre information from JSON structures)</li>
+                        <li><strong>Data Integration</strong>: We merged the movies_metadata and ratings datasets using movie IDs as the common key</li>
+                        <li><strong>Feature Engineering</strong>: We created derived variables such as profit margins, decade groupings, and genre categories to facilitate more insightful analysis</li>
+                    </ol>
+                    <p>All preprocessing was performed using Python with pandas and NumPy libraries, ensuring reproducibility and transparency in our data preparation process.</p>
+                </div>
+
+                <div class="methodology-card">
+                    <h2>Analysis Approach</h2>
+                    <p>Our analysis followed a systematic approach to address our research questions:</p>
+                    <ol>
+                        <li><strong>Exploratory Data Analysis (EDA)</strong>: We began with descriptive statistics and exploratory visualizations to understand the distribution and relationships within our data</li>
+                        <li><strong>Pattern Identification</strong>: We used statistical methods to identify significant patterns and correlations between variables</li>
+                        <li><strong>Temporal Analysis</strong>: We examined how key metrics and relationships have evolved over time</li>
+                        <li><strong>Comparative Analysis</strong>: We compared different categories (genres, languages, etc.) to identify meaningful differences and similarities</li>
+                    </ol>
+                    <p>For each analysis, we carefully considered statistical significance and potential confounding factors to ensure the validity of our findings.</p>
+                </div>
+
+                <div class="methodology-card">
+                    <h2>Visualization Techniques</h2>
+                    <p>We employed various visualization techniques to effectively communicate our findings:</p>
+                    <div class="tools-grid">
+                        <div class="tool-item">
+                            <h3>Interactive Web Visualizations</h3>
+                            <ul>
+                                <li>Scatter plots for relationship analysis</li>
+                                <li>Bar charts for comparative analysis</li>
+                                <li>Line charts for temporal trends</li>
+                                <li>Heatmaps for correlation matrices</li>
+                                <li>Choropleth maps for geographical analysis</li>
+                            </ul>
+                        </div>
+                        <div class="tool-item">
+                            <h3>Technologies Used</h3>
+                            <ul>
+                                <li>D3.js for custom interactive visualizations</li>
+                                <li>Plotly.js for responsive charts</li>
+                                <li>HTML/CSS/JavaScript for web implementation</li>
+                                <li>Power BI for complex dashboard creation</li>
+                            </ul>
+                        </div>
+                        <div class="tool-item">
+                            <h3>Design Principles</h3>
+                            <ul>
+                                <li>Clarity and simplicity in visual representation</li>
+                                <li>Consistent color schemes and styling</li>
+                                <li>Interactive elements for user exploration</li>
+                                <li>Responsive design for multi-device accessibility</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="methodology-card">
+                    <h2>Validation and Quality Assurance</h2>
+                    <p>To ensure the reliability of our findings, we implemented several validation measures:</p>
+                    <ul>
+                        <li>Cross-validation of results using different analytical approaches</li>
+                        <li>Sensitivity analysis to assess the impact of assumptions and data limitations</li>
+                        <li>Peer review of analysis and visualizations within the team</li>
+                        <li>User testing of interactive visualizations to ensure usability and clarity</li>
+                    </ul>
+                    <p>These measures helped us identify and address potential issues in our analysis and presentation, strengthening the validity of our conclusions.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Cinematic Trends</h3>
+                    <p>A data visualization project exploring movie metadata and viewer preferences</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="methodology.html">Methodology</a></li>
+                        <li><a href="conclusion.html">Conclusion</a></li>
+                        <li><a href="team.html">Team</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>For more information about this project, please contact the team.</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Cinematic Trends Project. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

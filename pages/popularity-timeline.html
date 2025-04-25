@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popularity Timeline | Cinematic Trends</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav id="main-nav">
+            <div class="logo">
+                <h1>Cinematic Trends</h1>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <div class="dropdown">
+                    <button class="dropbtn">Visualizations</button>
+                    <div class="dropdown-content">
+                        <a href="revenue-budget.html">Revenue vs Budget</a>
+                        <a href="genre-ratings.html">Genre Ratings</a>
+                        <a href="trending.html">Trending Popularity</a>
+                        <a href="movies-by-language.html">Movies by Language</a>
+                        <a href="vote-count-rating.html">Vote Count vs Rating</a>
+                        <a href="top-companies.html">Top Production Companies</a>
+                        <a href="genre-language.html">Genre-Language Heatmap</a>
+                        <a href="rating-distribution.html">Rating Distribution</a>
+                        <a href="popularity-timeline.html" class="active">Popularity Timeline</a>
+                    </div>
+                </div>
+                <a href="methodology.html">Methodology</a>
+                <a href="conclusion.html">Conclusion</a>
+                <a href="team.html">Team</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="page-header">
+            <h1>Movie Popularity Timeline</h1>
+            <p>Explore how movie popularity has evolved over the years</p>
+        </section>
+
+        <section class="viz-container">
+            <div id="d3-popularity-timeline" class="chart-container"></div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About</h3>
+                    <p>Cinematic Trends analyzes movie data to uncover industry patterns and trends.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="methodology.html">Methodology</a></li>
+                        <li><a href="team.html">Team</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Cinematic Trends. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/visualizations/movie-data-viz.js"></script>
+</body>
+</html>

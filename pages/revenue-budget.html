@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revenue vs Budget | Cinematic Trends</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav id="main-nav">
+            <div class="logo">
+                <h1>Cinematic Trends</h1>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <div class="dropdown">
+                    <button class="dropbtn">Visualizations</button>
+                    <div class="dropdown-content">
+                        <a href="revenue-budget.html" class="active">Revenue vs Budget</a>
+                        <a href="genre-ratings.html">Genre Ratings</a>
+                        <a href="trending.html">Trending Popularity</a>
+                        <a href="movies-by-language.html">Movies by Language</a>
+                        <a href="vote-count-rating.html">Vote Count vs Rating</a>
+                        <a href="top-companies.html">Top Production Companies</a>
+                        <a href="genre-language.html">Genre-Language Heatmap</a>
+                        <a href="rating-distribution.html">Rating Distribution</a>
+                    </div>
+                </div>
+                <a href="methodology.html">Methodology</a>
+                <a href="conclusion.html">Conclusion</a>
+                <a href="team.html">Team</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="visualization-header">
+            <div class="container">
+                <h1>Revenue vs Budget Analysis</h1>
+                <p>Exploring the relationship between movie budgets and box office returns over time</p>
+            </div>
+        </section>
+
+        <section class="visualization-content">
+            <div class="container">
+                <div class="viz-intro">
+                    <h2>Introduction</h2>
+                    <p>This visualization explores the relationship between movie budgets and their corresponding box office revenues. We analyze how this relationship has evolved over time and across different genres to identify patterns in financial success.</p>
+                </div>
+
+                <div class="viz-container">
+                    <div id="revenue-budget-chart" class="chart-container">
+                        <!-- Visualization will be rendered here -->
+                    </div>
+                    <div class="chart-controls">
+                        <div class="control-group">
+                            <label for="year-filter">Filter by Year:</label>
+                            <select id="year-filter">
+                                <option value="all">All Years</option>
+                                <option value="1990-2000">1990-2000</option>
+                                <option value="2000-2010">2000-2010</option>
+                                <option value="2010-2020">2010-2020</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label for="genre-filter">Filter by Genre:</label>
+                            <select id="genre-filter">
+                                <option value="all">All Genres</option>
+                                <option value="action">Action</option>
+                                <option value="comedy">Comedy</option>
+                                <option value="drama">Drama</option>
+                                <option value="sci-fi">Sci-Fi</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="viz-row">
+                    <div class="viz-col">
+                        <div class="viz-card">
+                            <h2>Power BI Visualization</h2>
+                            <div class="powerbi-container">
+                                <!-- Power BI Embed Code -->
+                                <iframe
+                                    title="Revenue vs Budget Analysis"
+                                    width="100%"
+                                    height="450"
+                                    src="https://app.powerbi.com/view?r=eyJrIjoiNjg2MjI5NTItMzZhZC00NTdkLWJmOWYtNDE2YjZmZjFhYmM2IiwidCI6IjcwZGUxOTkyLTA3YzYtNDgwZi1hMzE4LWExYWZjYmEwMzk4MyIsImMiOjN9"
+                                    frameborder="0"
+                                    allowFullScreen="true">
+                                </iframe>
+                                <!-- Replace with your actual Power BI report ID -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="viz-analysis">
+                    <h2>Key Findings</h2>
+                    <div class="findings-grid">
+                        <div class="finding-item">
+                            <h3>ROI by Budget Range</h3>
+                            <p>Mid-budget films ($20-60 million) consistently show the highest return on investment across most genres. High-budget films ($100+ million) show more variable returns, with blockbusters either significantly outperforming or underperforming their budgets.</p>
+                        </div>
+                        <div class="finding-item">
+                            <h3>Genre Differences</h3>
+                            <p>Action and sci-fi films typically require larger budgets to generate proportional returns, while horror and comedy films often achieve high ROI with relatively modest budgets.</p>
+                        </div>
+                        <div class="finding-item">
+                            <h3>Temporal Trends</h3>
+                            <p>The average budget-to-revenue ratio has shifted over time, with post-2010 films showing a higher threshold for profitability compared to earlier decades.</p>
+                        </div>
+                        <div class="finding-item">
+                            <h3>Outlier Analysis</h3>
+                            <p>Several notable outliers demonstrate that exceptional content can transcend typical budget constraints, achieving remarkable revenues despite modest production costs.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="viz-methodology">
+                    <h2>Methodology Notes</h2>
+                    <p>This visualization uses a scatter plot with logarithmic scales to accommodate the wide range of budget and revenue values. Each point represents a movie, with color indicating genre and size reflecting popularity. Budget and revenue figures are adjusted for inflation to 2020 dollars.</p>
+                    <p>Data limitations include incomplete budget information for some films and varying reporting standards for international box office revenues.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Cinematic Trends</h3>
+                    <p>A data visualization project exploring movie metadata and viewer preferences</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="methodology.html">Methodology</a></li>
+                        <li><a href="conclusion.html">Conclusion</a></li>
+                        <li><a href="team.html">Team</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>For more information about this project, please contact the team.</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Cinematic Trends Project. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/visualizations/revenue-budget.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genre Ratings | Cinematic Trends</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav id="main-nav">
+            <div class="logo">
+                <h1>Cinematic Trends</h1>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <div class="dropdown">
+                    <button class="dropbtn">Visualizations</button>
+                    <div class="dropdown-content">
+                        <a href="revenue-budget.html">Revenue vs Budget</a>
+                        <a href="genre-ratings.html" class="active">Genre Ratings</a>
+                        <a href="trending.html">Trending Popularity</a>
+                        <a href="movies-by-language.html">Movies by Language</a>
+                        <a href="vote-count-rating.html">Vote Count vs Rating</a>
+                        <a href="top-companies.html">Top Production Companies</a>
+                        <a href="genre-language.html">Genre-Language Heatmap</a>
+                        <a href="rating-distribution.html">Rating Distribution</a>
+                    </div>
+                </div>
+                <a href="methodology.html">Methodology</a>
+                <a href="conclusion.html">Conclusion</a>
+                <a href="team.html">Team</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="visualization-header">
+            <div class="container">
+                <h1>Genre Ratings Analysis</h1>
+                <p>Comparing average ratings across different movie genres</p>
+            </div>
+        </section>
+
+        <section class="visualization-content">
+            <div class="container">
+                <div class="viz-intro">
+                    <h2>Introduction</h2>
+                    <p>This visualization explores how different movie genres are rated by viewers. We analyze rating patterns across genres to identify which categories consistently receive higher ratings and which show the most variability in audience reception.</p>
+                </div>
+
+                <div class="viz-row">
+					<div class="viz-col">
+						<div class="viz-card">
+							<h2>Power BI Visualization</h2>
+							<div class="powerbi-container">
+								<!-- Power BI Embed Code -->
+								<iframe
+                                    title="Movies by Language Analysis"
+                                    width="100%"
+                                    height="450"
+                                    src="https://app.powerbi.com/view?r=eyJrIjoiNjg2MjI5NTItMzZhZC00NTdkLWJmOWYtNDE2YjZmZjFhYmM2IiwidCI6IjcwZGUxOTkyLTA3YzYtNDgwZi1hMzE4LWExYWZjYmEwMzk4MyIsImMiOjN9"
+                                    frameborder="0"
+                                    allowFullScreen="true">
+                                </iframe>								<!-- Replace with your actual Power BI report ID -->
+							</div>
+						</div>
+					</div>
+				</div>
+
+                <div class="viz-container">
+                    <div id="genre-ratings-chart" class="chart-container">
+                        <!-- Visualization will be rendered here -->
+                    </div>
+                    <div class="chart-controls">
+                        <div class="control-group">
+                            <label for="rating-type">Rating Type:</label>
+                            <select id="rating-type">
+                                <option value="average">Average Rating</option>
+                                <option value="distribution">Rating Distribution</option>
+                                <option value="variance">Rating Variance</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label for="time-period">Time Period:</label>
+                            <select id="time-period">
+                                <option value="all">All Time</option>
+                                <option value="1990-2000">1990-2000</option>
+                                <option value="2000-2010">2000-2010</option>
+                                <option value="2010-2020">2010-2020</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- New D3.js Rating Distribution Visualization -->
+                <div class="viz-row">
+                    <div class="viz-col">
+                        <div class="viz-card">
+                            <h2>Rating Distribution by Score (D3.js)</h2>
+                            <div class="controls">
+                                <div class="control-group">
+                                    <label for="rating-filter">Filter by Rating:</label>
+                                    <select id="rating-filter">
+                                        <option value="all">All Ratings</option>
+                                        <option value="0.5">0.5 Stars</option>
+                                        <option value="1">1 Star</option>
+                                        <option value="1.5">1.5 Stars</option>
+                                        <option value="2">2 Stars</option>
+                                        <option value="2.5">2.5 Stars</option>
+                                        <option value="3">3 Stars</option>
+                                        <option value="3.5">3.5 Stars</option>
+                                        <option value="4">4 Stars</option>
+                                        <option value="4.5">4.5 Stars</option>
+                                        <option value="5">5 Stars</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="d3-rating-distribution" class="chart-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="viz-analysis">
+                    <h2>Key Findings</h2>
+                    <div class="findings-grid">
+                        <div class="finding-item">
+                            <h3>Highest Rated Genres</h3>
+                            <p>Documentary, animation, and adventure films consistently receive the highest average ratings across all time periods. These genres maintain strong audience appreciation regardless of changing trends.</p>
+                        </div>
+                        <div class="finding-item">
+                            <h3>Most Polarizing Genres</h3>
+                            <p>Horror and thriller genres show the highest rating variance, indicating more polarized audience reactions. These genres tend to have strong niche appeal rather than broad audience satisfaction.</p>
+                        </div>
+                        <div class="finding-item">
+                            <h3>Rating Trends Over Time</h3>
+                            <p>Science fiction and superhero films have seen significant increases in average ratings since 2010, reflecting improved production quality and mainstream acceptance of these genres.</p>
+                        </div>
+                        <div class="finding-item">
+                            <h3>Genre Combinations</h3>
+                            <p>Films categorized in multiple genres (e.g., drama-comedy, action-adventure) typically receive higher ratings than single-genre films, suggesting that genre-blending appeals to wider audiences.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="viz-methodology">
+                    <h2>Methodology Notes</h2>
+                    <p>This visualization uses bar charts and box plots to represent rating distributions across genres. Average ratings are calculated using a weighted mean that accounts for the number of votes each film received.</p>
+                    <p>Genre classifications are based on primary and secondary genre tags in the TMDB dataset. Films with multiple genres are counted in each applicable category for the distribution analysis.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Cinematic Trends</h3>
+                    <p>A data visualization project exploring movie metadata and viewer preferences</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="methodology.html">Methodology</a></li>
+                        <li><a href="conclusion.html">Conclusion</a></li>
+                        <li><a href="team.html">Team</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>For more information about this project, please contact the team.</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Cinematic Trends Project. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/visualizations/genre-ratings.js"></script>
+    <script src="../js/main.js"></script>
+
+    <!-- Vega & Vega-Lite (for Altair) -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+    <!-- New visualizations script -->
+    <script src="../js/visualizations/movie-data-viz.js"></script>
+</body>
+</html>

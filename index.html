@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinematic Trends: Exploring Movie Metadata and Viewer Preferences</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!-- Add Vega-Lite -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <!-- Add your visualization scripts -->
+    <script src="js/d3-budget-revenue.js"></script>
+    <script src="js/plotly-genre-ratings.js"></script>
+    <script src="js/vega-popularity-trends.js"></script>
+</head>
+<body>
+    <header>
+        <nav id="main-nav">
+            <div class="logo">
+                <h1>Cinematic Trends</h1>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <div class="dropdown">
+                    <button class="dropbtn">Visualizations</button>
+                    <div class="dropdown-content">
+                        <a href="pages/revenue-budget.html">Revenue vs Budget</a>
+                        <a href="pages/genre-ratings.html">Genre Ratings</a>
+                        <a href="pages/trending.html">Trending Popularity</a>
+                        <a href="pages/movies-by-language.html">Movies by Language</a>
+                        <a href="pages/vote-count-rating.html">Vote Count vs Rating</a>
+                        <a href="pages/top-companies.html">Top Production Companies</a>
+                        <a href="pages/genre-language.html">Genre-Language Heatmap</a>
+                        <a href="pages/rating-distribution.html">Rating Distribution</a>
+                        <a href="pages/movie-analysis.html">Movie Data Analysis</a>
+                        <a href="pages/popularity-timeline.html">Popularity Timeline</a>
+                    </div>
+                </div>
+                <a href="pages/methodology.html">Methodology</a>
+                <a href="pages/conclusion.html">Conclusion</a>
+                <a href="pages/team.html">Team</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Cinematic Trends</h1>
+                <h2>Exploring Movie Metadata and Viewer Preferences</h2>
+                <p>An interactive data visualization project analyzing TMDB movie datasets</p>
+                <a href="#overview" class="btn">Explore Project</a>
+            </div>
+        </section>
+
+        <section id="overview" class="overview">
+            <div class="container">
+                <h2>Project Overview</h2>
+                <p>This data analysis project uses TMDB movie datasets to explore viewer preferences, genre popularity, and movie ratings trends. We analyze patterns and relationships in the film industry to uncover insights about what makes movies successful and appealing to audiences.</p>
+
+                <div class="overview-cards">
+                    <div class="card">
+                        <h3>Problem Statement</h3>
+                        <p>Our project aims to answer key questions about the film industry:</p>
+                        <ul>
+                            <li>How do genre ratings vary across different viewer segments?</li>
+                            <li>Does runtime influence viewer perception and ratings?</li>
+                            <li>What patterns exist in viewer behavior and preferences?</li>
+                            <li>How do budget and revenue relate to critical and audience reception?</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>Dataset Description</h3>
+                        <p>We analyzed two primary datasets from Kaggle:</p>
+                        <ul>
+                            <li><strong>movies_metadata.csv</strong>: Contains information about movies including budget, revenue, genres, languages, and ratings</li>
+                            <li><strong>ratings.csv</strong>: Contains user ratings for various movies</li>
+                        </ul>
+                        <p>These datasets were cleaned, merged, and processed to create our visualization datasets.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="workflow">
+            <div class="container">
+                <h2>Project Workflow</h2>
+                <div class="workflow-diagram">
+                    <div class="workflow-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Data Collection</h3>
+                            <p>TMDB datasets from Kaggle</p>
+                        </div>
+                    </div>
+                    <div class="workflow-arrow">→</div>
+                    <div class="workflow-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Data Preprocessing</h3>
+                            <p>Cleaning, merging, and transformation</p>
+                        </div>
+                    </div>
+                    <div class="workflow-arrow">→</div>
+                    <div class="workflow-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Analysis</h3>
+                            <p>Statistical analysis and pattern identification</p>
+                        </div>
+                    </div>
+                    <div class="workflow-arrow">→</div>
+                    <div class="workflow-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Visualization</h3>
+                            <p>Power BI and interactive web visualizations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="visualization-preview">
+            <div class="container">
+                <h2>Visualization Highlights</h2>
+                <div class="preview-grid">
+                    <div class="preview-card">
+                        <div id="revenue-budget-preview" class="preview-img"></div>
+                        <h3>Revenue vs Budget</h3>
+                        <p>Exploring the relationship between movie budgets and box office returns over time</p>
+                        <a href="pages/revenue-budget.html" class="btn-small">View Analysis</a>
+                    </div>
+                    <div class="preview-card">
+                        <div id="genre-ratings-preview" class="preview-img"></div>
+                        <h3>Genre Ratings</h3>
+                        <p>Comparing average ratings across different movie genres</p>
+                        <a href="pages/genre-ratings.html" class="btn-small">View Analysis</a>
+                    </div>
+                    <div class="preview-card">
+                        <div id="popularity-preview" class="preview-img"></div>
+                        <h3>Trending Popularity</h3>
+                        <p>Tracking how movie popularity has evolved over the years</p>
+                        <a href="pages/trending.html" class="btn-small">View Analysis</a>
+                    </div>
+                </div>
+                <div class="view-all">
+                    <a href="#" class="btn" id="view-all-btn">View All Visualizations</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Cinematic Trends</h3>
+                    <p>A data visualization project exploring movie metadata and viewer preferences</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="pages/methodology.html">Methodology</a></li>
+                        <li><a href="pages/conclusion.html">Conclusion</a></li>
+                        <li><a href="pages/team.html">Team</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>For more information about this project, please contact the team.</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Cinematic Trends Project. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

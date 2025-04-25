@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trending Popularity | Cinematic Trends</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav id="main-nav">
+            <div class="logo">
+                <h1>Cinematic Trends</h1>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <div class="dropdown">
+                    <button class="dropbtn">Visualizations</button>
+                    <div class="dropdown-content">
+                        <a href="revenue-budget.html">Revenue vs Budget</a>
+                        <a href="genre-ratings.html">Genre Ratings</a>
+                        <a href="trending.html" class="active">Trending Popularity</a>
+                        <a href="movies-by-language.html">Movies by Language</a>
+                        <a href="vote-count-rating.html">Vote Count vs Rating</a>
+                        <a href="top-companies.html">Top Production Companies</a>
+                        <a href="genre-language.html">Genre-Language Heatmap</a>
+                        <a href="rating-distribution.html">Rating Distribution</a>
+                    </div>
+                </div>
+                <a href="methodology.html">Methodology</a>
+                <a href="conclusion.html">Conclusion</a>
+                <a href="team.html">Team</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="visualization-header">
+            <div class="container">
+                <h1>Trending Popularity Analysis</h1>
+                <p>Tracking how movie popularity has evolved over the years</p>
+            </div>
+        </section>
+
+        <section class="visualization-content">
+            <div class="container">
+                <div class="viz-intro">
+                    <h2>Introduction</h2>
+                    <p>This visualization tracks the evolution of movie popularity over time, identifying trends in audience preferences and the rise and fall of different genres. We analyze how cultural, technological, and industry factors have influenced what types of films capture audience attention.</p>
+                </div>
+
+                <div class="viz-container">
+                    <div id="trending-chart" class="chart-container">
+                        <!-- Visualization will be rendered here -->
+                    </div>
+                    <div class="chart-controls">
+                        <div class="control-group">
+                            <label for="trend-metric">Popularity Metric:</label>
+                            <select id="trend-metric">
+                                <option value="vote_count">Vote Count</option>
+                                <option value="popularity">TMDB Popularity</option>
+                                <option value="revenue">Box Office Revenue</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label for="trend-view">View By:</label>
+                            <select id="trend-view">
+                                <option value="year">Year</option>
+                                <option value="decade">Decade</option>
+                                <option value="genre">Genre Over Time</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="viz-row">
+                    <div class="viz-col">
+                        <div class="viz-card">
+                            <h2>Power BI Visualization</h2>
+                            <div class="powerbi-container">
+                                <!-- Power BI Embed Code -->
+                                <iframe
+                                    title="Trending Popularity Analysis"
+                                    width="100%"
+                                    height="450"
+                                    src="https://app.powerbi.com/view?r=eyJrIjoiNjg2MjI5NTItMzZhZC00NTdkLWJmOWYtNDE2YjZmZjFhYmM2IiwidCI6IjcwZGUxOTkyLTA3YzYtNDgwZi1hMzE4LWExYWZjYmEwMzk4MyIsImMiOjN9"
+                                    frameborder="0"
+                                    allowFullScreen="true">
+                                </iframe>
+                                <!-- Replace with your actual Power BI report ID -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- New D3.js Popularity Timeline Visualization -->
+                <div class="viz-row">
+                    <div class="viz-col">
+                        <div class="viz-card">
+                            <h2>Popularity Timeline (D3.js)</h2>
+                            <div id="d3-popularity-timeline" class="chart-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- New Plotly Runtime vs Rating Visualization -->
+                <div class="viz-row">
+                    <div class="viz-col">
+                        <div class="viz-card">
+                            <h2>Runtime vs Rating Analysis (Plotly)</h2>
+                            <div id="plotly-runtime-rating" class="chart-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="viz-analysis">
+                    <h2>Key Findings</h2>
+                    <div class="findings-grid">
+                        <div class="finding-item">
+                            <h3>Genre Evolution</h3>
+                            <p>Superhero and franchise films have seen a dramatic rise in popularity since 2008, coinciding with the launch of the Marvel Cinematic Universe. This trend has continued to dominate through the 2010s and into the 2020s.</p>
+                        </div>
+                        <div class="finding-item">
+                            <h3>Seasonal Patterns</h3>
+                            <p>Clear seasonal patterns emerge in film popularity, with summer blockbuster season (May-July) and holiday releases (November-December) consistently showing higher audience engagement across decades.</p>
+                        </div>
+                        <div class="finding-item">
+                            <h3>Streaming Impact</h3>
+                            <p>Post-2015 data shows changing patterns in how popularity is measured, with streaming releases demonstrating different engagement patterns compared to traditional theatrical releases.</p>
+                        </div>
+                        <div class="finding-item">
+                            <h3>Nostalgia Cycles</h3>
+                            <p>We identified approximately 20-30 year nostalgia cycles, where themes, aesthetics, and reboots from previous generations see renewed popularity with audiences.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="viz-methodology">
+                    <h2>Methodology Notes</h2>
+                    <p>This visualization uses line charts and area charts to track popularity metrics over time. The TMDB popularity score is a composite metric that includes factors such as number of votes, recency, and user engagement.</p>
+                    <p>For historical comparison, we've normalized popularity scores within each time period to account for the increasing number of ratings in more recent years. This allows for more meaningful comparison across different eras of filmmaking.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Cinematic Trends</h3>
+                    <p>A data visualization project exploring movie metadata and viewer preferences</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="methodology.html">Methodology</a></li>
+                        <li><a href="conclusion.html">Conclusion</a></li>
+                        <li><a href="team.html">Team</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>For more information about this project, please contact the team.</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Cinematic Trends Project. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/visualizations/trending.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/visualizations/movie-data-viz.js"></script>
+</body>
+</html>
