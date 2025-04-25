@@ -7,3 +7,6 @@ Cinematic Trends is a data visualization project that explores movie metadata an
 - Interactive visualizations using D3.js, Plotly, and Vega-Lite
 - Analysis of movie data across different genres and languages
 - Insights into movie trends and viewer preferences
+
+
+Link to the website: https://sashi789.github.io/SDV_project/index.html
